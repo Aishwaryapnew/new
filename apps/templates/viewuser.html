@@ -1,0 +1,63 @@
+<!-- templates/viewuser.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>View Assessment Plan</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #dddddd;
+        }
+        th {
+            background-color: #3f51b5;
+            color: white;
+        }
+        td {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Assessment Plan</h1>
+  
+<table id="table">
+    <!-- Table headers -->
+    <thead >
+        <tr>
+            <th>Duration</th>
+            <th>Weightage</th>
+            <th>Typeology</th>
+            <th>Pattern</th>
+            <th>Schedule</th>
+            <th>Topics Covered</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for us in userdata %}
+        <tr>
+            <td>{{ us.duration }}</td>
+            <td>{{ us.Weightage }}</td>
+            <td>{{ us.typeology }}</td>
+            <td>{{ us.Pattern }}</td>
+            <td>{{ us.schedule }}</td>
+            <td>{{ us.topicsovered }}</td>
+            <td>{{ us.action }}
+                <a href="{% url 'deleteprofile' us.id %}">Delete</a>
+            </td>
+                <td><a href="{% url 'edit' us.id %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

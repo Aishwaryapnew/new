@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<a href"{%url 'viewuser'%}">
+<title>Assessment Plan</title>
+<style>
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+padding: 15px;
+text-align: center;
+border: 1px solid #dddddd;
+}
+th {
+background-color: #3f51b5;
+color: white;
+}
+td {
+background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+
+<h1>Assessment Plan</h1>
+<form name="assignment" method="POST" action="/assessment_plan/assessment_plan_insert/">
+{% csrf_token %}
+<table id="table">
+<!-- Table headers -->
+<thead>
+<tr>
+<th>duration</th>
+<th>Weightage</th>
+<th>typeology</th>
+<th>Pattern</th>
+<th>schedule</th>
+<th>topics Covered</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody> 
+<tr>
+<td>duration:<input type="text" name="duration" value="{{ entry.duration}}"></td>
+<td>Weightage:<input type="text" name="Weightage" value="{{ entry.Weightage}}"></td>
+<td>typeology:<input type="text" name="typeology" value="{{ entry.typeology }}"></td>
+<td>Pattern:<input type="text" name="Pattern" value="{{ entry.Pattern}}"></td>
+<td>schedule:<input type="text" name="schedule" value="{{ entry.schedule}}"></td>
+<td>topicsovered:<input type="text" name=" topicsovered" value="{{ entry.topicsovered }}"></td>
+<td><button type="button" onclick="removeRow(this)">Remove</button></td>
+</tr>
+</tbody>
+</table>
+<button type="button" onclick="addRow()">Add Row</button>
+<button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
+
