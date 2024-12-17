@@ -9,25 +9,25 @@
 <body>
 <h1>Edit Assessment Plan</h1>
 
-<form method="POST" action="/updateprofile/{{user.id}}">
+<form method="POST" action="/updateprofile/<str:duration>/">
     {% csrf_token %}
     <label for="duration">Duration:</label>
-    <input type="text" name="duration" value="{{ user.duration }}"><br>
+    <input type="text" name="duration" id="duration" value="{{ userdata.duration }}"><br>
 
     <label for="weightage">Weightage:</label>
-    <input type="text" name="weightage" value="{{ user.Weightage }}"><br>
+    <input type="text" name="weightage"id="Weightage" value="{{ userdata.Weightage }}"><br>
 
     <label for="typeology">Typeology:</label>
-    <input type="text" name="typeology" value="{{ user.typeology }}"><br>
+    <input type="text" name="typeology" id="typeology" value="{{ userdata.typeology }}"><br>
 
     <label for="pattern">Pattern:</label>
-    <input type="text" name="pattern" value="{{ user.Pattern }}"><br>
+    <input type="text" name="pattern" id="'Pattern" value="{{ userdata.Pattern }}"><br>
 
     <label for="schedule">Schedule:</label>
-    <input type="text" name="schedule" value="{{ user.schedule }}"><br>
+    <input type="text" name="schedule" id="schedule" value="{{ userdata.schedule }}"><br>
 
     <label for="topics_covered">Topics Covered:</label>
-    <textarea name="topics_covered">{{ user.topicscoverd }}</textarea><br>
+    <textarea name="topics_covered">{{ userdata.topicscoverd }} </textarea><br>
     
     <button type="submit">Save Changes</button>
 </form>

@@ -50,11 +50,11 @@
             <td>{{ us.typeology }}</td>
             <td>{{ us.Pattern }}</td>
             <td>{{ us.schedule }}</td>
-            <td>{{ us.topicsovered }}</td>
+            <td>{{ us.topicscoverd}}</td>
             <td>{{ us.action }}
-                <a href="{% url 'deleteprofile' us.id %}">Delete</a>
+                <a href="{% url 'deleteprofile' us.duration %}">Delete</a>
             </td>
-                <td><a href="{% url 'edit' us.id %}">Edit</a></td>
+                <td><a href="{% url 'edit' us.duration %}">Edit</a></td>
         </tr>
         {% endfor %}
     </tbody>

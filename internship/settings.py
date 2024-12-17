@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'internship.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AssessmentPlan',  # Name of your MySQL database
+        'NAME': 'AssessmentPlan1',  # Name of your MySQL database
         'USER': 'root',           # Your MySQL username
         'PASSWORD': 'manipal123',  # Your MySQL password
         'HOST': 'localhost',

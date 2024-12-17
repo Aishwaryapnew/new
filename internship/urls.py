@@ -22,5 +22,4 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.urls')),  # Include URLs from apps app
-    #path('viewuser/', views.view_user, name='view_user'),
 ]

@@ -3,6 +3,7 @@ from django.template import loader
 from django.shortcuts import render
 from .models import AssessmentPlan
 from django.views.decorators.csrf import csrf_protect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.shortcuts import redirect
 @csrf_protect
 def assessment_plan(request):
@@ -15,7 +16,7 @@ def assessment_plan_insert(request):
     vPattern= request.POST['Pattern']
     vschedule = request.POST['schedule']
     vtopicscoverd = request.POST['topicscoverd']
-    ap = AssessmentPlan(duration=vduration, Weightage = vWeightage, typeology = vtypeology,Pattern =vPattern,schedule=vschedule,topicsovered=vtopicscoverd)
+    ap = AssessmentPlan(duration=vduration, Weightage = vWeightage, typeology = vtypeology,Pattern =vPattern,schedule=vschedule,topicscoverd=vtopicscoverd)
     ap.save()
     return render(request, 'assessment_plan.html',{})
 
@@ -23,23 +24,23 @@ def viewuser(request):
     user=AssessmentPlan.objects.all()
     return render(request,"viewuser.html",{'userdata':user})
 
-def deleteprofile(request,id):
-    us=AssessmentPlan.objects.filter(id=id)
-    us.delete()
-    return redirect("/viewuser")
+def deleteprofile(request,duration):
+    us=AssessmentPlan.objects.get(duration=duration)
+    us.delete()    
+    return redirect("viewuser")
 
-def edit(request,id):
-    user=AssessmentPlan.objects.filter(id=id)
+def edit(request,duration):
+    user=AssessmentPlan.objects.get(duration=duration)
     return render(request, "edit.html",{'userdata':user})
 
-def updateprofile(request,id):
+def updateprofile(request,duration):
     avduration= request.POST['duration']
     avWeightage = request.POST['Weightage']
     avtypeology = request.POST['typeology']
     avPattern= request.POST['Pattern']
     avschedule = request.POST['schedule']
     avtopicscoverd = request.POST['topicscoverd']
-    user=AssessmentPlan.objects.get(id=id)
+    user=AssessmentPlan.objects.get(duration=duration)
     user.duration=avduration
     user.Weightage=avWeightage
     user.typeology=avtypeology
@@ -47,4 +48,5 @@ def updateprofile(request,id):
     user.schedule= avschedule
     user.topicscoverd= avtopicscoverd
     user.save()
-    return redirect("/viewuser")
+    return redirect("viewuser")
+    
